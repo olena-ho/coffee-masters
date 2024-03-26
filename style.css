@@ -9,6 +9,13 @@ body {
   background-color: #efefef;
 }
 
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -29,18 +36,55 @@ body {
 .wrapper {
   width: 100%;
   padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-  "menu order"
-  "total total";
-  row-gap: 20px;
-  column-gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "menu order"
+      "total total";
+    row-gap: 20px;
+    column-gap: 20px;
+  }
 }
 
 .menu {
   grid-area: menu;
   height: fit-content;
+  margin-bottom: 15px;
+}
+
+.menu__items {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  row-gap: 8px;
+  column-gap: 8px;
+  grid-template-areas:
+    "items__amount item__title item__price"
+    "items__amount item__extra-options item__price";
+  padding: 10px 0;
+}
+
+.menu__items:not(:last-child) {
+  border-bottom: 2px solid #DDB892;
+}
+
+.item__title {
+  grid-area: item__title;
+  font-weight: bold;
+}
+
+.item__price {
+  grid-area: item__price;
+  font-weight: bold;
+}
+
+.item__extra-options {
+  grid-area: item__extra-options;
+  color: #B08968;
+  font-size: 14px;
 }
 
 .order {
@@ -53,7 +97,7 @@ body {
 
 .card {
   background-color: #eee1d5;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
 }
 
@@ -67,3 +111,42 @@ body {
 .order__client {
   margin-bottom: 15px;
 }
+
+.client-name {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input__form-label {
+  color: #885a2d;
+  background-color: #eee1d5;
+  font-size: 11px;
+  position: absolute;
+  left: 25px;
+  top: -7px;
+  padding: 0 2px;
+}
+
+.input-style {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid #885a2d;
+  border-radius: 100px;
+  color: #885a2d;
+  width: 100%;
+  padding: 8px;
+  text-indent: 18px;
+  font-size: 16px;
+}
+
+.input-style--ccv {
+  width: 50%;
+}
+
+.payment__form {
+  position: relative;
+}
+
+.payment__form:not(:last-child) {
+  margin-bottom: 20px;
+}
+
