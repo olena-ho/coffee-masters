@@ -38,18 +38,7 @@ li {
   padding: 20px;
 }
 
-@media (min-width: 640px) {
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "menu order"
-      "total total";
-    row-gap: 20px;
-    column-gap: 20px;
-  }
-}
-
+/*#region menu*/
 .menu {
   grid-area: menu;
   height: fit-content;
@@ -87,12 +76,11 @@ li {
   font-size: 14px;
 }
 
+/* #endregion */
+
+/* #region order&pay */
 .order {
   grid-area: order;
-}
-
-.total {
-  grid-area: total;
 }
 
 .card {
@@ -128,7 +116,7 @@ li {
 }
 
 .input-style {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 2px solid #885a2d;
   border-radius: 100px;
   color: #885a2d;
@@ -136,6 +124,10 @@ li {
   padding: 8px;
   text-indent: 18px;
   font-size: 16px;
+}
+
+.input-style:focus {
+  border-color: #eee1d5;
 }
 
 .input-style--ccv {
@@ -149,4 +141,57 @@ li {
 .payment__form:not(:last-child) {
   margin-bottom: 20px;
 }
+/* #endregion */
 
+.total {
+  grid-area: total;
+}
+
+.total__table {
+  width: 50%;
+  margin: 50px auto 30px;
+}
+
+.total__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.total__row:last-child {
+  font-weight: bold;
+}
+
+.btn__order {
+  width: 100%;
+  border-radius: 30px;
+  background-color: #deb993;
+  color: #43281c;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+@media (min-width: 640px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "menu order"
+      "total total";
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+}
+
+@media (min-width: 1056px) {
+  .wrapper {
+    width: 1056px;
+    margin: 0 auto;
+  }
+
+  .total__table {
+    width: 30%;
+  }
+}
